@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qwenkit"
+version = "1.0.0"
+description = "Free API setup, Claude Code migration and a starter pack for Qwen Code CLI"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["qwen", "qwen-code", "claude-code", "cli", "ai", "coding-agent", "migration"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Utilities",
+]
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.5"]
+
+[project.urls]
+Repository = "https://github.com/vovadruzhinin/qwenkit"
+Issues = "https://github.com/vovadruzhinin/qwenkit/issues"
+
+[project.scripts]
+qwenkit = "qwenkit.cli:main"
+
+[tool.setuptools]
+packages = ["qwenkit"]
+
+[tool.setuptools.package-data]
+qwenkit = ["py.typed"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+    "E501",   # длинные строки: в русском тексте много кириллицы
+    "B008",   # вызов функции в аргументе по умолчанию
+    "SIM108", # тернарник не всегда читаемее
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
