@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# тесты и кэш
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# результаты работы конвертера в этом репозитории
+.qwen-backup-*/
+.claude-backup-*/
+tests/fixture-cc/.qwen/
+tests/fixture-cc/QWEN.md
+tests/fixture-cc/MIGRATION_TODO.md
+
+# локальная конфигурация и секреты — никогда не коммитить
+.qwen/settings.json
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+*_secret
+
+# ОС и редакторы
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
