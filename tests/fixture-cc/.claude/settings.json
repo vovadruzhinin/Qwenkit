@@ -1,0 +1,20 @@
+{
+  "model": "claude-sonnet-4-5",
+  "permissions": {
+    "allow": ["Bash(npm run test:*)", "Read(~/.zshrc)"],
+    "deny": ["Read(./.env)", "Bash(git push:*)"]
+  },
+  "apiKeyHelper": "./scripts/get-key.sh",
+  "includeCoAuthoredBy": false,
+  "env": { "MY_TOKEN": "secret-$CLAUDE_PROJECT_DIR" },
+  "hooks": {
+    "PostToolUse": [
+      { "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR/scripts/fmt.sh\"", "timeout": 30000 }] }
+    ],
+    "WeirdCustomEvent": [
+      { "hooks": [{ "type": "command", "command": "echo hi" }] }
+    ]
+  },
+  "statusLine": { "type": "command", "command": "./statusline.sh" }
+}
